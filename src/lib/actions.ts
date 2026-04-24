@@ -44,8 +44,13 @@ const fallbackSiteSettings = {
 
 // 사이트 설정 가져오기
 export async function getSiteSettings() {
-  // 빌드 CI에는 DATABASE_URL이 없으므로 DB 호출 자체를 건너뛰어 프리렌더 실패 방지
-  if (!process.env.DATABASE_URL) {
+  // Next.js 빌드 단계에서는 DB 접근 없이 기본값 반환. Next가 next build 중에
+  // NEXT_PHASE=phase-production-build로 세팅하는 것을 이용 (DATABASE_URL
+  // 유무보다 확실한 빌드 단계 감지 방법).
+  if (
+    process.env.NEXT_PHASE === "phase-production-build" ||
+    !process.env.DATABASE_URL
+  ) {
     return fallbackSiteSettings;
   }
 
