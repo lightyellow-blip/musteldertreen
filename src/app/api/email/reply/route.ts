@@ -3,8 +3,6 @@ import { Resend } from "resend";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 interface Attachment {
   filename: string;
   content: string; // base64
@@ -41,6 +39,7 @@ export async function POST(request: Request) {
     const emailSubject = replySubject || `[답변] ${subject || "문의하신 내용에 대한 답변입니다"}`;
 
     // 이메일 발송
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const { data, error } = await resend.emails.send({
       from: process.env.EMAIL_FROM || "머스트 엘더트리엔 <noreply@eldertrien.com>",
       to: [to],
