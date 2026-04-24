@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { getSession, isSuperAdmin } from "@/lib/auth";
+import { getSession, isSuperAdmin } from "@/lib/admin/auth";
 import AdminsClient from "./AdminsClient";
 
 export default async function AdminsPage() {

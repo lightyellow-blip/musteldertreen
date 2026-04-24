@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
-import { getSession, hasPermission } from "@/lib/auth";
+import { prisma } from "@/lib/shared/prisma";
+import { getSession, hasPermission } from "@/lib/admin/auth";
 
 // 문의 상세 조회 (인증 필요)
 export async function GET(

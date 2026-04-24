@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@/lib/shared/prisma";
 
 // 문의 접수 (프론트 폼 제출 - 인증 불필요)
 export async function POST(request: Request) {

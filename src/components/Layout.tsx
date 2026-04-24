@@ -1,4 +1,4 @@
-import { getActiveMenus, getSiteSettings } from "@/lib/actions";
+import { getActiveMenus, getSiteSettings } from "@/lib/front/actions";
 import Header from "./Header";
 import Footer from "./Footer";
 

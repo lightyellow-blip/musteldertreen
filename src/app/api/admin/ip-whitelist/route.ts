@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
-import { getSession, isSuperAdmin } from "@/lib/auth";
+import { prisma } from "@/lib/shared/prisma";
+import { getSession, isSuperAdmin } from "@/lib/admin/auth";
 
 // IP 목록 조회
 export async function GET() {

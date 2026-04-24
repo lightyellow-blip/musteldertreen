@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import type { AdminSession, Permission } from "@/lib/auth";
+import type { AdminSession, Permission } from "@/lib/admin/auth";
 
 interface NavItem {
   label: string;

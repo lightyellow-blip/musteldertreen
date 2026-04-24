@@ -1,6 +1,6 @@
 "use server";
 
-import prisma from "@/lib/prisma";
+import prisma from "@/lib/shared/prisma";
 
 // 메뉴 가져오기 (활성화된 것만)
 export async function getActiveMenus() {

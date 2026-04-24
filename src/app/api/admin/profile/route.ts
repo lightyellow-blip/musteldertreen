@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
-import { getSession, setSessionCookie } from "@/lib/auth";
+import { prisma } from "@/lib/shared/prisma";
+import { getSession, setSessionCookie } from "@/lib/admin/auth";
 import bcrypt from "bcryptjs";
 
 // 내 정보 수정

@@ -1,4 +1,4 @@
-import { checkIpWhitelist } from "@/lib/ip-check";
+import { checkIpWhitelist } from "@/lib/admin/ip-check";
 import LoginClient from "./LoginClient";
 
 export default async function LoginPage() {

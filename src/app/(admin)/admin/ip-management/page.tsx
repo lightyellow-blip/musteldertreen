@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { getSession, isSuperAdmin } from "@/lib/auth";
+import { getSession, isSuperAdmin } from "@/lib/admin/auth";
 import IpManagementClient from "./IpManagementClient";
 
 export default async function IpManagementPage() {

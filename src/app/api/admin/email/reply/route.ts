@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { getSession } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
+import { getSession } from "@/lib/admin/auth";
+import { prisma } from "@/lib/shared/prisma";
 
 interface Attachment {
   filename: string;

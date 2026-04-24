@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
-import type { AdminSession } from "@/lib/auth";
+import type { AdminSession } from "@/lib/admin/auth";
 
 interface Props {
   session: AdminSession;

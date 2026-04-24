@@ -1,6 +1,6 @@
 "use server";
 
-import prisma from "@/lib/prisma";
+import prisma from "@/lib/shared/prisma";
 
 // 대시보드용 문의 통계
 export async function getDashboardStats() {

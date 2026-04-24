@@ -1,4 +1,4 @@
-import { getSession } from "@/lib/auth";
+import { getSession } from "@/lib/admin/auth";
 import { redirect } from "next/navigation";
 import ProfileClient from "./ProfileClient";
 

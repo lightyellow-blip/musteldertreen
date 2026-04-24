@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
-import { getSession } from "@/lib/auth";
-import { checkIpWhitelist } from "@/lib/ip-check";
+import { getSession } from "@/lib/admin/auth";
+import { checkIpWhitelist } from "@/lib/admin/ip-check";
 import AdminSidebar from "./AdminSidebar";
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {

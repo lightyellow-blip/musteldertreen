@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { submitInquiry } from "@/lib/actions";
+import { submitInquiry } from "@/lib/front/actions";
 
 export default function InquiryForm() {
   const [isPending, startTransition] = useTransition();
