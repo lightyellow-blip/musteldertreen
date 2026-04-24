@@ -51,3 +51,6 @@ next-env.d.ts
 
 # local scratch
 /image/
+
+# local secrets (credentials, API keys, etc.)
+/secrets/
