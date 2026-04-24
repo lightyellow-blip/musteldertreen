@@ -17,23 +17,57 @@ export async function getActiveMenus() {
   return menus;
 }
 
+// DB 미접속 환경(빌드 CI / 일시 장애)에서 반환할 기본 설정.
+// Settings 모델 전 필드를 schema 기본값(빈 문자열)으로 채워 타입 호환 유지.
+const fallbackSiteSettings = {
+  id: "site",
+  siteName: "머스트 엘더트리엔",
+  siteDescription: "디지털 혁신을 이끄는 IT 솔루션 파트너",
+  logoUrl: "",
+  faviconUrl: "",
+  footerText: "",
+  address: "",
+  phone: "",
+  email: "",
+  businessHours: "",
+  instagram: "",
+  facebook: "",
+  youtube: "",
+  blog: "",
+  metaTitle: "",
+  metaDescription: "",
+  metaKeywords: "",
+  googleAnalyticsId: "",
+  createdAt: new Date(0),
+  updatedAt: new Date(0),
+};
+
 // 사이트 설정 가져오기
 export async function getSiteSettings() {
-  let settings = await prisma.settings.findUnique({
-    where: { id: "site" },
-  });
-
-  if (!settings) {
-    settings = await prisma.settings.create({
-      data: {
-        id: "site",
-        siteName: "머스트 엘더트리엔",
-        siteDescription: "디지털 혁신을 이끄는 IT 솔루션 파트너",
-      },
-    });
+  // 빌드 CI에는 DATABASE_URL이 없으므로 DB 호출 자체를 건너뛰어 프리렌더 실패 방지
+  if (!process.env.DATABASE_URL) {
+    return fallbackSiteSettings;
   }
 
-  return settings;
+  try {
+    let settings = await prisma.settings.findUnique({
+      where: { id: "site" },
+    });
+
+    if (!settings) {
+      settings = await prisma.settings.create({
+        data: {
+          id: "site",
+          siteName: "머스트 엘더트리엔",
+          siteDescription: "디지털 혁신을 이끄는 IT 솔루션 파트너",
+        },
+      });
+    }
+
+    return settings;
+  } catch {
+    return fallbackSiteSettings;
+  }
 }
 
 // 특정 메뉴의 콘텐츠 가져오기
