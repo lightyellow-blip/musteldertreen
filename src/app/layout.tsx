@@ -13,23 +13,33 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export async function generateMetadata(): Promise<Metadata> {
-  const settings = await getSiteSettings();
+const defaultMetadata: Metadata = {
+  title: {
+    default: "머스트 엘더트리엔",
+    template: "%s | 머스트 엘더트리엔",
+  },
+  description: "디지털 혁신을 이끄는 IT 솔루션 파트너",
+};
 
-  return {
-    title: {
-      default: settings.metaTitle || settings.siteName || "머스트 엘더트리엔",
-      template: `%s | ${settings.siteName || "머스트 엘더트리엔"}`,
-    },
-    description:
-      settings.metaDescription ||
-      settings.siteDescription ||
-      "디지털 혁신을 이끄는 IT 솔루션 파트너",
-    keywords: settings.metaKeywords || "",
-    icons: settings.faviconUrl
-      ? { icon: settings.faviconUrl }
-      : undefined,
-  };
+export async function generateMetadata(): Promise<Metadata> {
+  // 빌드 시점(정적 생성)에는 DB에 접근 불가하므로 실패 시 기본 메타데이터로 폴백
+  try {
+    const settings = await getSiteSettings();
+    return {
+      title: {
+        default: settings.metaTitle || settings.siteName || "머스트 엘더트리엔",
+        template: `%s | ${settings.siteName || "머스트 엘더트리엔"}`,
+      },
+      description:
+        settings.metaDescription ||
+        settings.siteDescription ||
+        "디지털 혁신을 이끄는 IT 솔루션 파트너",
+      keywords: settings.metaKeywords || "",
+      icons: settings.faviconUrl ? { icon: settings.faviconUrl } : undefined,
+    };
+  } catch {
+    return defaultMetadata;
+  }
 }
 
 export default function RootLayout({
