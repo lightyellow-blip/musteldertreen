@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { SignJWT, jwtVerify } from "jose";
-import { prisma } from "./prisma";
+import { prisma } from "@/lib/shared/prisma";
 import bcrypt from "bcryptjs";
 
 export type Permission = "menus" | "contents" | "inquiries" | "analytics" | "settings" | "admins";

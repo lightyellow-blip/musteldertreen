@@ -1,5 +1,5 @@
 import { headers } from "next/headers";
-import { prisma } from "./prisma";
+import { prisma } from "@/lib/shared/prisma";
 
 // 클라이언트 IP 가져오기
 export async function getClientIp(): Promise<string> {
