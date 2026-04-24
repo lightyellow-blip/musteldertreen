@@ -25,7 +25,7 @@ export default function IpManagementClient() {
 
   const fetchIps = async () => {
     try {
-      const res = await fetch("/api/ip-whitelist");
+      const res = await fetch("/api/admin/ip-whitelist");
       if (res.ok) {
         const data = await res.json();
         setIps(data);
@@ -45,7 +45,7 @@ export default function IpManagementClient() {
     setMessage(null);
 
     try {
-      const res = await fetch("/api/ip-whitelist", {
+      const res = await fetch("/api/admin/ip-whitelist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -73,7 +73,7 @@ export default function IpManagementClient() {
 
   const handleToggle = async (id: string, isActive: boolean) => {
     try {
-      const res = await fetch(`/api/ip-whitelist/${id}`, {
+      const res = await fetch(`/api/admin/ip-whitelist/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ isActive: !isActive }),
@@ -91,7 +91,7 @@ export default function IpManagementClient() {
     if (!confirm("이 IP를 삭제하시겠습니까?")) return;
 
     try {
-      const res = await fetch(`/api/ip-whitelist/${id}`, {
+      const res = await fetch(`/api/admin/ip-whitelist/${id}`, {
         method: "DELETE",
       });
 

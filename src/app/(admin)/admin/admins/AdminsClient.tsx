@@ -43,7 +43,7 @@ export default function AdminsClient() {
 
   const fetchAdmins = async () => {
     try {
-      const res = await fetch("/api/admins");
+      const res = await fetch("/api/admin/admins");
       const data = await res.json();
       if (data.success) {
         setAdmins(data.admins);
@@ -82,7 +82,7 @@ export default function AdminsClient() {
     try {
       if (editingAdmin) {
         // 수정
-        const res = await fetch(`/api/admins/${editingAdmin.id}`, {
+        const res = await fetch(`/api/admin/admins/${editingAdmin.id}`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -100,7 +100,7 @@ export default function AdminsClient() {
         }
       } else {
         // 생성
-        const res = await fetch("/api/admins", {
+        const res = await fetch("/api/admin/admins", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
@@ -122,7 +122,7 @@ export default function AdminsClient() {
 
   const toggleActive = async (admin: Admin) => {
     try {
-      const res = await fetch(`/api/admins/${admin.id}`, {
+      const res = await fetch(`/api/admin/admins/${admin.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ isActive: !admin.isActive }),
@@ -140,7 +140,7 @@ export default function AdminsClient() {
     if (!confirm(`${admin.name} 관리자를 삭제하시겠습니까?`)) return;
 
     try {
-      const res = await fetch(`/api/admins/${admin.id}`, {
+      const res = await fetch(`/api/admin/admins/${admin.id}`, {
         method: "DELETE",
       });
       const data = await res.json();

@@ -110,7 +110,7 @@ export default function InquiryDetailClient({ inquiry }: Props) {
     setEmailError("");
 
     try {
-      const res = await fetch("/api/email/reply", {
+      const res = await fetch("/api/admin/email/reply", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
