@@ -1,6 +1,7 @@
 export default function ApproachSection() {
   return (
     <section
+      data-section-theme="light"
       className="main-enter relative flex w-full items-center justify-center overflow-hidden bg-white"
       style={{ height: "100svh" }}
     >

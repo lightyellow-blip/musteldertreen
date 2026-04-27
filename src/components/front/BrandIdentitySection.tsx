@@ -24,6 +24,7 @@ const headlineStyle = {
 export default function BrandIdentitySection() {
   return (
     <section
+      data-section-theme="light"
       className="relative flex w-full items-center justify-center overflow-hidden bg-white"
       style={{ height: "100svh" }}
     >
