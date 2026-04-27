@@ -161,6 +161,39 @@ body {
 .animation-delay-300 { animation-delay: 0.3s; }
 .animation-delay-400 { animation-delay: 0.4s; }
 
+/* Intro → Main Crossfade */
+@keyframes introExit {
+  0%, 70% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes mainEnter {
+  0%, 70% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.intro-exit {
+  animation: introExit 3s ease-in-out forwards;
+}
+
+.main-enter {
+  opacity: 0;
+  animation: mainEnter 3s ease-in-out forwards;
+}
+
+/* Experience text rolling: 3 variants cycle, 2s each, 6s total */
+@keyframes experienceRoll {
+  0%    { transform: translateY(120%); opacity: 0; }
+  5%    { transform: translateY(0);    opacity: 1; }
+  33.3% { transform: translateY(0);    opacity: 1; }
+  38.3% { transform: translateY(-120%); opacity: 0; }
+  100%  { transform: translateY(-120%); opacity: 0; }
+}
+
+.experience-roll {
+  animation: experienceRoll 6s infinite ease-in-out both;
+}
+
 /* Sidebar Active Indicator */
 .nav-active {
   position: relative;

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Montserrat, Mrs_Sheppards, Gajraj_One, Bacasime_Antique } from "next/font/google";
 import "./globals.css";
 import { getSiteSettings } from "@/lib/front/actions";
 
@@ -11,6 +11,30 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+  weight: ["700", "800"],
+});
+
+const mrsSheppards = Mrs_Sheppards({
+  variable: "--font-mrs-sheppards",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const gajrajOne = Gajraj_One({
+  variable: "--font-gajraj-one",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const bacasimeAntique = Bacasime_Antique({
+  variable: "--font-bacasime-antique",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 const defaultMetadata: Metadata = {
@@ -50,7 +74,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${mrsSheppards.variable} ${gajrajOne.variable} ${bacasimeAntique.variable} h-full antialiased`}
     >
       <head>
         <link

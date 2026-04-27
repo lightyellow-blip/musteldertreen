@@ -54,3 +54,6 @@ next-env.d.ts
 
 # local secrets (credentials, API keys, etc.)
 /secrets/
+
+# 퍼블 로컬 작업물 (Next.js로 포팅 전 HTML/CSS 스케치 공간)
+/publish/
