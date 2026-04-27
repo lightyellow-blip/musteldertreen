@@ -24,15 +24,25 @@ interface Props {
   searchParams: Promise<{ tab?: string; page?: string }>;
 }
 
+// Render in KST (Asia/Seoul) regardless of the runtime's timezone — Vercel
+// servers run in UTC, so without an explicit timeZone the rows would all be
+// displayed 9 hours behind local time.
+const KST_FORMATTER = new Intl.DateTimeFormat("ko-KR", {
+  timeZone: "Asia/Seoul",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+  hour12: false,
+});
+
 function formatDate(date: Date) {
-  const d = new Date(date);
-  const yyyy = d.getFullYear();
-  const mm = String(d.getMonth() + 1).padStart(2, "0");
-  const dd = String(d.getDate()).padStart(2, "0");
-  const hh = String(d.getHours()).padStart(2, "0");
-  const mi = String(d.getMinutes()).padStart(2, "0");
-  const ss = String(d.getSeconds()).padStart(2, "0");
-  return `${yyyy}.${mm}.${dd} ${hh}:${mi}:${ss}`;
+  const parts = KST_FORMATTER.formatToParts(new Date(date));
+  const get = (type: Intl.DateTimeFormatPartTypes) =>
+    parts.find((p) => p.type === type)?.value ?? "";
+  return `${get("year")}.${get("month")}.${get("day")} ${get("hour")}:${get("minute")}:${get("second")}`;
 }
 
 function ActionBadge({ action }: { action: string }) {
