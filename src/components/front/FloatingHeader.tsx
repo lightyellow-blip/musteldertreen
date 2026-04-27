@@ -6,6 +6,7 @@ type Theme = "light" | "dark";
 
 export default function FloatingHeader() {
   const [theme, setTheme] = useState<Theme>("light");
+  const [showBackdrop, setShowBackdrop] = useState(true);
 
   useEffect(() => {
     const update = () => {
@@ -19,6 +20,7 @@ export default function FloatingHeader() {
         if (rect.top <= probeY && rect.bottom > probeY) {
           const t = section.dataset.sectionTheme;
           if (t === "dark" || t === "light") setTheme(t);
+          setShowBackdrop(section.dataset.headerBackdrop !== "hidden");
           return;
         }
       }
@@ -59,9 +61,11 @@ export default function FloatingHeader() {
          * Escapes the 16:9 frame to span the full viewport width so it isn't
          * pillarboxed on aspect ratios wider than 16:9. Height stays tied to
          * the frame so it never overlaps section content
-         * ("Our Approach:" at 20.370%, BrandIdentity marquee at 21.389%). */}
+         * ("Our Approach:" at 20.370%, BrandIdentity marquee at 21.389%).
+         * Sections can hide it via data-header-backdrop="hidden" when their
+         * own visual handles header legibility (e.g. full-bleed photo). */}
         <div
-          className="absolute transition-colors duration-300"
+          className="absolute transition-all duration-300"
           style={{
             top: 0,
             left: "50%",
@@ -69,6 +73,7 @@ export default function FloatingHeader() {
             width: "100vw",
             height: "12%",
             background: isDark ? "black" : "white",
+            opacity: showBackdrop ? 1 : 0,
           }}
         />
 
