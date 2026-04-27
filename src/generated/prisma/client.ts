@@ -72,6 +72,21 @@ export type Admin = Prisma.AdminModel
  */
 export type Settings = Prisma.SettingsModel
 /**
+ * Model AdminActivityLog
+ * 
+ */
+export type AdminActivityLog = Prisma.AdminActivityLogModel
+/**
+ * Model PersonalInfoAccessLog
+ * 
+ */
+export type PersonalInfoAccessLog = Prisma.PersonalInfoAccessLogModel
+/**
+ * Model EmailSendLog
+ * 
+ */
+export type EmailSendLog = Prisma.EmailSendLogModel
+/**
  * Model IpWhitelist
  * 
  */

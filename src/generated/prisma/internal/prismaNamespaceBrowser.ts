@@ -57,6 +57,9 @@ export const ModelName = {
   Content: 'Content',
   Admin: 'Admin',
   Settings: 'Settings',
+  AdminActivityLog: 'AdminActivityLog',
+  PersonalInfoAccessLog: 'PersonalInfoAccessLog',
+  EmailSendLog: 'EmailSendLog',
   IpWhitelist: 'IpWhitelist'
 } as const
 
@@ -179,6 +182,52 @@ export const SettingsScalarFieldEnum = {
 export type SettingsScalarFieldEnum = (typeof SettingsScalarFieldEnum)[keyof typeof SettingsScalarFieldEnum]
 
 
+export const AdminActivityLogScalarFieldEnum = {
+  id: 'id',
+  adminId: 'adminId',
+  adminEmail: 'adminEmail',
+  adminName: 'adminName',
+  action: 'action',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  metadata: 'metadata',
+  createdAt: 'createdAt'
+} as const
+
+export type AdminActivityLogScalarFieldEnum = (typeof AdminActivityLogScalarFieldEnum)[keyof typeof AdminActivityLogScalarFieldEnum]
+
+
+export const PersonalInfoAccessLogScalarFieldEnum = {
+  id: 'id',
+  adminId: 'adminId',
+  adminName: 'adminName',
+  resource: 'resource',
+  resourceId: 'resourceId',
+  action: 'action',
+  ipAddress: 'ipAddress',
+  createdAt: 'createdAt'
+} as const
+
+export type PersonalInfoAccessLogScalarFieldEnum = (typeof PersonalInfoAccessLogScalarFieldEnum)[keyof typeof PersonalInfoAccessLogScalarFieldEnum]
+
+
+export const EmailSendLogScalarFieldEnum = {
+  id: 'id',
+  toEmail: 'toEmail',
+  subject: 'subject',
+  type: 'type',
+  status: 'status',
+  sentByAdminId: 'sentByAdminId',
+  sentByName: 'sentByName',
+  resourceId: 'resourceId',
+  resendId: 'resendId',
+  errorMessage: 'errorMessage',
+  createdAt: 'createdAt'
+} as const
+
+export type EmailSendLogScalarFieldEnum = (typeof EmailSendLogScalarFieldEnum)[keyof typeof EmailSendLogScalarFieldEnum]
+
+
 export const IpWhitelistScalarFieldEnum = {
   id: 'id',
   ip: 'ip',
@@ -204,6 +253,14 @@ export const JsonNullValueInput = {
 } as const
 
 export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
 export const QueryMode = {

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { login, setSessionCookie } from "@/lib/admin/auth";
+import { logActivity } from "@/lib/admin/access-log";
 
 export async function POST(request: NextRequest) {
   try {
@@ -15,6 +16,11 @@ export async function POST(request: NextRequest) {
     const result = await login(email, password);
 
     if (!result.success) {
+      await logActivity({
+        action: "LOGIN_FAILED",
+        adminEmail: email,
+        metadata: { reason: result.error },
+      });
       return NextResponse.json(
         { success: false, error: result.error },
         { status: 401 }
@@ -23,6 +29,13 @@ export async function POST(request: NextRequest) {
 
     // 세션 쿠키 설정
     await setSessionCookie(result.session!);
+
+    await logActivity({
+      action: "LOGIN",
+      adminId: result.session!.id,
+      adminEmail: result.session!.email,
+      adminName: result.session!.name,
+    });
 
     return NextResponse.json({
       success: true,

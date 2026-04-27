@@ -390,6 +390,9 @@ export const ModelName = {
   Content: 'Content',
   Admin: 'Admin',
   Settings: 'Settings',
+  AdminActivityLog: 'AdminActivityLog',
+  PersonalInfoAccessLog: 'PersonalInfoAccessLog',
+  EmailSendLog: 'EmailSendLog',
   IpWhitelist: 'IpWhitelist'
 } as const
 
@@ -406,7 +409,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "inquiry" | "menu" | "section" | "content" | "admin" | "settings" | "ipWhitelist"
+    modelProps: "inquiry" | "menu" | "section" | "content" | "admin" | "settings" | "adminActivityLog" | "personalInfoAccessLog" | "emailSendLog" | "ipWhitelist"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -854,6 +857,228 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    AdminActivityLog: {
+      payload: Prisma.$AdminActivityLogPayload<ExtArgs>
+      fields: Prisma.AdminActivityLogFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AdminActivityLogFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminActivityLogPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AdminActivityLogFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminActivityLogPayload>
+        }
+        findFirst: {
+          args: Prisma.AdminActivityLogFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminActivityLogPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AdminActivityLogFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminActivityLogPayload>
+        }
+        findMany: {
+          args: Prisma.AdminActivityLogFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminActivityLogPayload>[]
+        }
+        create: {
+          args: Prisma.AdminActivityLogCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminActivityLogPayload>
+        }
+        createMany: {
+          args: Prisma.AdminActivityLogCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AdminActivityLogCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminActivityLogPayload>[]
+        }
+        delete: {
+          args: Prisma.AdminActivityLogDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminActivityLogPayload>
+        }
+        update: {
+          args: Prisma.AdminActivityLogUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminActivityLogPayload>
+        }
+        deleteMany: {
+          args: Prisma.AdminActivityLogDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AdminActivityLogUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AdminActivityLogUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminActivityLogPayload>[]
+        }
+        upsert: {
+          args: Prisma.AdminActivityLogUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminActivityLogPayload>
+        }
+        aggregate: {
+          args: Prisma.AdminActivityLogAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAdminActivityLog>
+        }
+        groupBy: {
+          args: Prisma.AdminActivityLogGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdminActivityLogGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AdminActivityLogCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdminActivityLogCountAggregateOutputType> | number
+        }
+      }
+    }
+    PersonalInfoAccessLog: {
+      payload: Prisma.$PersonalInfoAccessLogPayload<ExtArgs>
+      fields: Prisma.PersonalInfoAccessLogFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PersonalInfoAccessLogFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PersonalInfoAccessLogPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PersonalInfoAccessLogFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PersonalInfoAccessLogPayload>
+        }
+        findFirst: {
+          args: Prisma.PersonalInfoAccessLogFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PersonalInfoAccessLogPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PersonalInfoAccessLogFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PersonalInfoAccessLogPayload>
+        }
+        findMany: {
+          args: Prisma.PersonalInfoAccessLogFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PersonalInfoAccessLogPayload>[]
+        }
+        create: {
+          args: Prisma.PersonalInfoAccessLogCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PersonalInfoAccessLogPayload>
+        }
+        createMany: {
+          args: Prisma.PersonalInfoAccessLogCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PersonalInfoAccessLogCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PersonalInfoAccessLogPayload>[]
+        }
+        delete: {
+          args: Prisma.PersonalInfoAccessLogDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PersonalInfoAccessLogPayload>
+        }
+        update: {
+          args: Prisma.PersonalInfoAccessLogUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PersonalInfoAccessLogPayload>
+        }
+        deleteMany: {
+          args: Prisma.PersonalInfoAccessLogDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PersonalInfoAccessLogUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PersonalInfoAccessLogUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PersonalInfoAccessLogPayload>[]
+        }
+        upsert: {
+          args: Prisma.PersonalInfoAccessLogUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PersonalInfoAccessLogPayload>
+        }
+        aggregate: {
+          args: Prisma.PersonalInfoAccessLogAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePersonalInfoAccessLog>
+        }
+        groupBy: {
+          args: Prisma.PersonalInfoAccessLogGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PersonalInfoAccessLogGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PersonalInfoAccessLogCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PersonalInfoAccessLogCountAggregateOutputType> | number
+        }
+      }
+    }
+    EmailSendLog: {
+      payload: Prisma.$EmailSendLogPayload<ExtArgs>
+      fields: Prisma.EmailSendLogFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.EmailSendLogFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailSendLogPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.EmailSendLogFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailSendLogPayload>
+        }
+        findFirst: {
+          args: Prisma.EmailSendLogFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailSendLogPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.EmailSendLogFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailSendLogPayload>
+        }
+        findMany: {
+          args: Prisma.EmailSendLogFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailSendLogPayload>[]
+        }
+        create: {
+          args: Prisma.EmailSendLogCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailSendLogPayload>
+        }
+        createMany: {
+          args: Prisma.EmailSendLogCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.EmailSendLogCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailSendLogPayload>[]
+        }
+        delete: {
+          args: Prisma.EmailSendLogDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailSendLogPayload>
+        }
+        update: {
+          args: Prisma.EmailSendLogUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailSendLogPayload>
+        }
+        deleteMany: {
+          args: Prisma.EmailSendLogDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.EmailSendLogUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.EmailSendLogUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailSendLogPayload>[]
+        }
+        upsert: {
+          args: Prisma.EmailSendLogUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmailSendLogPayload>
+        }
+        aggregate: {
+          args: Prisma.EmailSendLogAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateEmailSendLog>
+        }
+        groupBy: {
+          args: Prisma.EmailSendLogGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EmailSendLogGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.EmailSendLogCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EmailSendLogCountAggregateOutputType> | number
+        }
+      }
+    }
     IpWhitelist: {
       payload: Prisma.$IpWhitelistPayload<ExtArgs>
       fields: Prisma.IpWhitelistFieldRefs
@@ -1070,6 +1295,52 @@ export const SettingsScalarFieldEnum = {
 export type SettingsScalarFieldEnum = (typeof SettingsScalarFieldEnum)[keyof typeof SettingsScalarFieldEnum]
 
 
+export const AdminActivityLogScalarFieldEnum = {
+  id: 'id',
+  adminId: 'adminId',
+  adminEmail: 'adminEmail',
+  adminName: 'adminName',
+  action: 'action',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  metadata: 'metadata',
+  createdAt: 'createdAt'
+} as const
+
+export type AdminActivityLogScalarFieldEnum = (typeof AdminActivityLogScalarFieldEnum)[keyof typeof AdminActivityLogScalarFieldEnum]
+
+
+export const PersonalInfoAccessLogScalarFieldEnum = {
+  id: 'id',
+  adminId: 'adminId',
+  adminName: 'adminName',
+  resource: 'resource',
+  resourceId: 'resourceId',
+  action: 'action',
+  ipAddress: 'ipAddress',
+  createdAt: 'createdAt'
+} as const
+
+export type PersonalInfoAccessLogScalarFieldEnum = (typeof PersonalInfoAccessLogScalarFieldEnum)[keyof typeof PersonalInfoAccessLogScalarFieldEnum]
+
+
+export const EmailSendLogScalarFieldEnum = {
+  id: 'id',
+  toEmail: 'toEmail',
+  subject: 'subject',
+  type: 'type',
+  status: 'status',
+  sentByAdminId: 'sentByAdminId',
+  sentByName: 'sentByName',
+  resourceId: 'resourceId',
+  resendId: 'resendId',
+  errorMessage: 'errorMessage',
+  createdAt: 'createdAt'
+} as const
+
+export type EmailSendLogScalarFieldEnum = (typeof EmailSendLogScalarFieldEnum)[keyof typeof EmailSendLogScalarFieldEnum]
+
+
 export const IpWhitelistScalarFieldEnum = {
   id: 'id',
   ip: 'ip',
@@ -1095,6 +1366,14 @@ export const JsonNullValueInput = {
 } as const
 
 export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
 export const QueryMode = {
@@ -1305,6 +1584,9 @@ export type GlobalOmitConfig = {
   content?: Prisma.ContentOmit
   admin?: Prisma.AdminOmit
   settings?: Prisma.SettingsOmit
+  adminActivityLog?: Prisma.AdminActivityLogOmit
+  personalInfoAccessLog?: Prisma.PersonalInfoAccessLogOmit
+  emailSendLog?: Prisma.EmailSendLogOmit
   ipWhitelist?: Prisma.IpWhitelistOmit
 }
 

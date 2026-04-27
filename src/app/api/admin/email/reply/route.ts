@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { getSession } from "@/lib/admin/auth";
 import { prisma } from "@/lib/shared/prisma";
+import { logEmailSend } from "@/lib/admin/access-log";
 
 interface Attachment {
   filename: string;
@@ -54,6 +55,16 @@ export async function POST(request: Request) {
 
     if (error) {
       console.error("Email send error:", error);
+      await logEmailSend({
+        toEmail: to,
+        subject: emailSubject,
+        type: "INQUIRY_REPLY",
+        status: "FAILED",
+        sentByAdminId: session.id,
+        sentByName: session.name,
+        resourceId: inquiryId ?? null,
+        errorMessage: typeof error === "string" ? error : JSON.stringify(error),
+      });
       return NextResponse.json(
         { success: false, error: "이메일 발송에 실패했습니다." },
         { status: 500 }
@@ -73,6 +84,17 @@ export async function POST(request: Request) {
         },
       });
     }
+
+    await logEmailSend({
+      toEmail: to,
+      subject: emailSubject,
+      type: "INQUIRY_REPLY",
+      status: "SENT",
+      sentByAdminId: session.id,
+      sentByName: session.name,
+      resourceId: inquiryId ?? null,
+      resendId: data?.id ?? null,
+    });
 
     return NextResponse.json({ success: true, messageId: data?.id });
   } catch (error) {

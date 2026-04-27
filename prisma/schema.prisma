@@ -122,6 +122,59 @@ model Settings {
   updatedAt        DateTime @updatedAt
 }
 
+// 관리자 활동 로그 (로그인/로그아웃/실패)
+model AdminActivityLog {
+  id        String   @id @default(cuid())
+  adminId   String?  // 로그인 실패 시 null 가능
+  adminEmail String? // 시도한 이메일 (실패 케이스 추적용)
+  adminName String?  // 스냅샷
+  action    String   // LOGIN | LOGOUT | LOGIN_FAILED
+  ipAddress String?
+  userAgent String?
+  metadata  Json?    // 자유 형식 추가 정보 (예: 실패 사유)
+  createdAt DateTime @default(now())
+
+  @@index([adminId])
+  @@index([action])
+  @@index([createdAt])
+}
+
+// 개인정보 접근 이력 (현재는 문의 상세 진입 시점만 기록)
+model PersonalInfoAccessLog {
+  id         String   @id @default(cuid())
+  adminId    String
+  adminName  String   // 스냅샷
+  resource   String   // "inquiry"
+  resourceId String   // 접근한 row id
+  action     String   // VIEW
+  ipAddress  String?
+  createdAt  DateTime @default(now())
+
+  @@index([adminId])
+  @@index([resource, resourceId])
+  @@index([createdAt])
+}
+
+// 메일 발송 이력
+model EmailSendLog {
+  id            String   @id @default(cuid())
+  toEmail       String
+  subject       String
+  type          String   // INQUIRY_REPLY
+  status        String   // SENT | FAILED
+  sentByAdminId String?
+  sentByName    String?  // 스냅샷
+  resourceId    String?  // 관련 리소스 id (예: inquiryId)
+  resendId      String?  // Resend API response id
+  errorMessage  String?
+  createdAt     DateTime @default(now())
+
+  @@index([sentByAdminId])
+  @@index([type])
+  @@index([status])
+  @@index([createdAt])
+}
+
 // IP 화이트리스트
 model IpWhitelist {
   id          String   @id @default(cuid())
