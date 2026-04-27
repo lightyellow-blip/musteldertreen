@@ -9,7 +9,6 @@ const root = join(here, "..", "public", "images");
 /** @type {{ dir: string; name: string; ext: string }[]} */
 const jobs = [
   { dir: "approach", name: "im-photo1", ext: "png" },
-  { dir: "approach", name: "im-photo2", ext: "png" },
   { dir: "approach", name: "visual-pc", ext: "png" },
   { dir: "approach", name: "guidi-photo", ext: "jpg" },
 ];

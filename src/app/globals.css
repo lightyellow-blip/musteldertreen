@@ -181,17 +181,32 @@ body {
   animation: mainEnter 3s ease-in-out forwards;
 }
 
-/* Experience text rolling: 3 variants cycle, 2s each, 6s total */
+/* Experience banner: 3 unique frames + duplicate of frame 1 for seamless loop.
+ * Inner wrapper stacks 4 frames vertically; translateY moves up one frame at a time.
+ * 2s per frame × 3 = 6s cycle. The snap from -75% (duplicate of frame 1) back to 0
+ * (frame 1) at the loop boundary is visually invisible. */
 @keyframes experienceRoll {
-  0%    { transform: translateY(120%); opacity: 0; }
-  5%    { transform: translateY(0);    opacity: 1; }
-  33.3% { transform: translateY(0);    opacity: 1; }
-  38.3% { transform: translateY(-120%); opacity: 0; }
-  100%  { transform: translateY(-120%); opacity: 0; }
+  0%, 30%        { transform: translateY(0); }
+  33.33%, 63.33% { transform: translateY(-25%); }
+  66.66%, 96.66% { transform: translateY(-50%); }
+  100%           { transform: translateY(-75%); }
 }
 
 .experience-roll {
-  animation: experienceRoll 6s infinite ease-in-out both;
+  /* 3s delay matches introExit/mainEnter duration so frame 1 stays visible
+   * through the intro and rolling begins right when the main section lands. */
+  animation: experienceRoll 6s 3s infinite ease-in-out;
+}
+
+/* Marquee: inner row contains the 3-item cycle duplicated; translate -50% loops seamlessly */
+@keyframes marqueeScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marqueeScroll 30s linear infinite;
+  will-change: transform;
 }
 
 /* Sidebar Active Indicator */

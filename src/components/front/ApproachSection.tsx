@@ -17,31 +17,15 @@ export default function ApproachSection() {
           className="absolute overflow-hidden"
           style={{ top: "22.870%", left: "46.458%", width: "53.542%", height: "16.019%" }}
         >
-          <div
-            className="absolute"
-            style={{ top: "-219.65%", left: "-8.27%", width: "221.50%", height: "838.73%" }}
-          >
-            <picture>
-              <source srcSet="/images/approach/im-photo1.avif" type="image/avif" />
-              <img
-                src="/images/approach/im-photo1.webp"
-                alt=""
-                aria-hidden
-                className="pointer-events-none absolute max-w-none select-none"
-                style={{ width: "190.96%", height: "193.49%", left: "-46.44%", top: "-65.23%" }}
-              />
-            </picture>
-            <picture>
-              <source srcSet="/images/approach/im-photo2.avif" type="image/avif" />
-              <img
-                src="/images/approach/im-photo2.webp"
-                alt=""
-                aria-hidden
-                className="pointer-events-none absolute max-w-none select-none"
-                style={{ width: "150.37%", height: "169.53%", left: "-23.2%", top: "-44.3%" }}
-              />
-            </picture>
-          </div>
+          <picture>
+            <source srcSet="/images/approach/im-photo1.avif" type="image/avif" />
+            <img
+              src="/images/approach/im-photo1.webp"
+              alt=""
+              aria-hidden
+              className="pointer-events-none size-full select-none object-cover"
+            />
+          </picture>
           <p
             className="absolute whitespace-nowrap text-right"
             style={{
@@ -130,40 +114,6 @@ export default function ApproachSection() {
           </div>
         </div>
 
-        {/* Logo: MUST */}
-        <img
-          src="/images/approach/logo-must.svg"
-          alt="MUST"
-          className="absolute"
-          style={{ top: "5.556%", left: "3.125%", width: "3.002cqw", height: "0.744cqw" }}
-        />
-        {/* Logo: ELEDRTREE */}
-        <img
-          src="/images/approach/logo-eldertree.svg"
-          alt="ELEDRTREE"
-          className="absolute"
-          style={{ top: "7.536%", left: "3.125%", width: "6.250cqw", height: "0.715cqw" }}
-        />
-
-        {/* Nav */}
-        <nav
-          className="absolute flex items-center"
-          style={{
-            top: "6.481%",
-            right: "3.125%",
-            gap: "3.125cqw",
-            color: "#242424",
-            fontSize: "0.833cqw",
-            fontFamily: "var(--font-montserrat)",
-            fontWeight: 700,
-            lineHeight: 1.2,
-          }}
-        >
-          <a href="#" className="whitespace-nowrap">Work</a>
-          <a href="#" className="whitespace-nowrap">Service</a>
-          <a href="#" className="whitespace-nowrap">Contact</a>
-        </nav>
-
         {/* Our Approach label */}
         <p
           className="absolute whitespace-nowrap"
@@ -198,22 +148,68 @@ export default function ApproachSection() {
           <p style={{ margin: 0 }}>identity&amp;</p>
         </div>
 
-        {/* Headline: experience (script, red) */}
-        <p
-          className="absolute uppercase whitespace-nowrap"
+        {/* Headline: experience — rolling banner (3 frames + duplicate for seamless loop) */}
+        <div
+          className="absolute overflow-hidden"
           style={{
             top: "53.426%",
             left: "13.802%",
-            color: "red",
-            fontFamily: "var(--font-mrs-sheppards)",
-            fontSize: "5.729cqw",
-            letterSpacing: "0.172cqw",
-            lineHeight: "6.250cqw",
-            margin: 0,
+            height: "6.250cqw",
           }}
         >
-          experience
-        </p>
+          <div className="experience-roll">
+            {/* Frame 1: original script text */}
+            <p
+              className="uppercase whitespace-nowrap"
+              style={{
+                color: "red",
+                fontFamily: "var(--font-mrs-sheppards)",
+                fontSize: "5.729cqw",
+                letterSpacing: "0.172cqw",
+                lineHeight: "6.250cqw",
+                height: "6.250cqw",
+                margin: 0,
+              }}
+            >
+              experience
+            </p>
+            {/* Frame 2: bold red EXPERIENCE */}
+            <div style={{ height: "6.250cqw", display: "flex", alignItems: "center" }}>
+              <img
+                src="/images/main/experience_02.png"
+                alt=""
+                aria-hidden
+                className="pointer-events-none select-none"
+                style={{ display: "block", height: "3.125cqw", width: "auto", maxWidth: "none" }}
+              />
+            </div>
+            {/* Frame 3: serif EXPERIENCE */}
+            <div style={{ height: "6.250cqw", display: "flex", alignItems: "center" }}>
+              <img
+                src="/images/main/experience_03.png"
+                alt=""
+                aria-hidden
+                className="pointer-events-none select-none"
+                style={{ display: "block", height: "3.125cqw", width: "auto", maxWidth: "none" }}
+              />
+            </div>
+            {/* Frame 4: duplicate of Frame 1 for seamless loop */}
+            <p
+              className="uppercase whitespace-nowrap"
+              style={{
+                color: "red",
+                fontFamily: "var(--font-mrs-sheppards)",
+                fontSize: "5.729cqw",
+                letterSpacing: "0.172cqw",
+                lineHeight: "6.250cqw",
+                height: "6.250cqw",
+                margin: 0,
+              }}
+            >
+              experience
+            </p>
+          </div>
+        </div>
 
         {/* Korean subtitle */}
         <p
@@ -253,7 +249,7 @@ export default function ApproachSection() {
             src="/images/approach/arrow-right.svg"
             alt=""
             aria-hidden
-            style={{ width: "1.250cqw", height: "1.250cqw" }}
+            style={{ width: "1.250cqw", height: "1.250cqw", transform: "rotate(90deg)" }}
           />
         </div>
 
